@@ -1,0 +1,60 @@
+<header class="shadow-sm sticky top-0 z-50">
+  <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center space-x-3">
+      <div
+        class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center"
+      >
+        <i class="fas fa-book-open w-5 h-5 text-white"></i>
+      </div>
+      <div>
+        <h1 class="text-xl font-bold text-card">English FlashCards</h1>
+        <p class="text-sm text-muted">Learn vocabulary effectively</p>
+      </div>
+    </a>
+    <nav class="header-desktop-nav space-x-4">
+      <a href="/" class="text-card hover:text-blue-600 font-medium">Home</a>
+      <a href="flashcard" class="text-card hover:text-blue-600 font-medium"
+        >Flashcards</a
+      >
+      <a href="stats" class="text-card hover:text-blue-600 font-medium"
+        >Statistics</a
+      >
+    </nav>
+    <!-- Theme Toggle for Desktop -->
+    <button id="theme-toggle" class="theme-toggle">
+      <i id="sun-icon" class="fas fa-sun w-5 h-5 pt-[2px] text-yellow-500"></i>
+      <i
+        id="moon-icon"
+        class="fas fa-moon w-5 h-5 pt-[2px] text-light-700 hidden"
+      ></i>
+    </button>
+    <button id="mobile-nav-toggle" class="header-mobile-nav-toggle text-card">
+      <i class="fas fa-bars w-6 h-6"></i>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Navigation Overlay -->
+<div id="mobile-nav-overlay" class="mobile-nav-overlay">
+  <div class="mobile-nav-content">
+    <button id="mobile-nav-close-btn" class="mobile-nav-close-btn">
+      <i class="fas fa-times w-6 h-6"></i>
+    </button>
+    <nav class="nav-links flex flex-col">
+      <a href="/">Home</a>
+      <a href="flashcard">Flashcards</a>
+      <a href="stats">Statistics</a>
+      <!-- Theme Toggle moved here for mobile -->
+      <button id="theme-toggle-mobile" class="theme-toggle">
+        <i
+          id="sun-icon-mobile"
+          class="fas fa-sun w-5 h-5 pt-[2px] text-yellow-500"
+        ></i>
+        <i
+          id="moon-icon-mobile"
+          class="fas fa-moon w-5 h-5 pt-[2px] text-light-700 hidden"
+        ></i>
+      </button>
+    </nav>
+  </div>
+</div>

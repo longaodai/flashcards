@@ -1,0 +1,566 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.flip-card-front {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.progress-bar {
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.slide-in {
+  animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pulse-animation {
+  animation: pulse 0.3s ease-in-out;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.btn-secondary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.pronunciation-btn {
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.pronunciation-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.pronunciation-btn:active {
+  transform: scale(0.95);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.speaking {
+  animation: speaking 1s infinite;
+}
+
+@keyframes speaking {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .flip-card-front,
+  .flip-card-back {
+    padding: 1.5rem;
+  }
+}
+
+/* Theme variables */
+:root {
+  --bg-primary: #f9fafb;
+  --bg-secondary: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border-color: #374151;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Apply theme variables to elements */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  margin-left: 1rem; /* Add some margin to the left of the desktop nav */
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Generic card/block styling for theme */
+.bg-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text-card {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.text-muted {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+/* Specific overrides for Tailwind classes that might conflict */
+.text-gray-900 {
+  color: var(--text-primary);
+}
+.text-gray-600 {
+  color: var(--text-secondary);
+}
+.text-gray-700 {
+  color: var(--text-secondary);
+}
+.bg-gray-50 {
+  background-color: var(--bg-primary);
+}
+.bg-gray-200 {
+  background-color: var(--border-color);
+} /* For progress bar track and secondary buttons */
+.hover\:bg-gray-300:hover {
+  background-color: var(--border-color);
+} /* For secondary buttons hover */
+
+/* Ensure header and footer use theme variables */
+header {
+  background-color: var(--bg-secondary);
+  box-shadow: var(--shadow);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+footer {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Header specific styles */
+.header-desktop-nav {
+  display: flex;
+}
+
+.header-mobile-nav-toggle {
+  display: none; /* Hidden by default on desktop */
+}
+
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  z-index: 110; /* Higher than theme toggle's previous fixed z-index */
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.mobile-nav-overlay.open {
+  display: flex;
+  opacity: 1;
+}
+
+.mobile-nav-content {
+  background-color: var(--bg-secondary);
+  width: 80%; /* Adjust as needed */
+  max-width: 300px;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+  transform: translateY(-20px); /* Initial position for animation */
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.mobile-nav-overlay.open .mobile-nav-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobile-nav-content .nav-links a {
+  display: block;
+  padding: 0.75rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.mobile-nav-content .nav-links a:hover {
+  color: #3b82f6; /* Blue-600 */
+}
+
+.mobile-nav-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.mobile-nav-close-btn:hover {
+  color: var(--text-primary);
+}
+
+/* Responsive adjustments for header */
+@media (max-width: 767px) {
+  header .max-w-4xl {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-desktop-nav {
+    display: none;
+  }
+
+  .header-mobile-nav-toggle {
+    display: block; /* Show hamburger on mobile */
+  }
+
+  /* Theme toggle inside mobile nav */
+  .mobile-nav-content .theme-toggle {
+    margin: 1rem auto; /* Center it in the mobile nav */
+  }
+
+  /* Hide desktop theme toggle on mobile */
+  header .theme-toggle {
+    display: none;
+  }
+}
+
+/* Modal styles for Learning Tips */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Above everything else */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background-color: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-overlay.show .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  color: var(--text-primary);
+}
+
+/* Animations for index.html */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+/* Professional design enhancements for index.html */
+.section-heading {
+  font-size: 2.5rem; /* md:text-4xl */
+  font-weight: 700; /* font-bold */
+  text-align: center;
+  color: var(--text-primary);
+  margin-bottom: 2.5rem; /* mb-10 */
+}
+
+.feature-card {
+  background-color: var(--bg-secondary);
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.how-it-works-step {
+  background-color: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.how-it-works-step-number {
+  width: 4rem; /* w-16 */
+  height: 4rem; /* h-16 */
+  border-radius: 9999px; /* rounded-full */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700; /* font-bold */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+/* Learning Tips Block on flashcard.html */
+.learning-tips-block {
+  background: linear-gradient(135deg, #fcd34d 0%, #f97316 100%); /* from-yellow-400 to-orange-500 */
+  color: white;
+  border-radius: 0.75rem; /* rounded-xl */
+  padding: 1.5rem; /* p-6 */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+}
+
+.learning-tips-block h3 {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700; /* font-bold */
+  margin-bottom: 0.75rem; /* mb-3 */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the heading */
+}
+
+.learning-tips-block .tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem; /* space-x-2 */
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.5;
+}
+
+.learning-tips-block .tip-icon {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments for learning tips */
+@media (min-width: 768px) {
+  .learning-tips-block .tip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
+  }
+}
+
+/* Flashcard buttons on one row for mobile */
+@media (max-width: 639px) {
+  .flashcard-controls {
+    flex-direction: row;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: space-between; /* Distribute space evenly */
+    gap: 0.5rem; /* Smaller gap for tight space */
+  }
+
+  .flashcard-controls button {
+    flex-grow: 1; /* Allow buttons to grow and fill space */
+    min-width: 0; /* Allow shrinking below 120px if necessary */
+    padding-left: 0.75rem; /* px-3 */
+    padding-right: 0.75rem; /* px-3 */
+    font-size: 0.875rem; /* text-sm */
+  }
+
+  /* Adjust hero section buttons for smaller screens */
+  .hero-buttons .btn-hero-sm {
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem; /* py-2 */
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+    font-size: 0.875rem; /* text-base */
+  }
+}

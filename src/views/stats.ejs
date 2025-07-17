@@ -1,0 +1,89 @@
+<!-- Main Content -->
+<main class="flex-grow max-w-4xl mx-auto px-4 py-6">
+  <div class="bg-card rounded-xl shadow-lg p-6 mb-6">
+    <h2 class="text-2xl font-bold text-card mb-4">Your Study Statistics</h2>
+
+    <!-- Today's Summary -->
+    <div class="mb-6">
+      <h3 class="text-xl font-semibold text-card mb-3 flex items-center">
+        <svg
+          class="w-5 h-5 mr-2 text-blue-500"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        Today's Summary
+      </h3>
+      <div class="grid grid-cols-2 gap-4 text-center">
+        <div class="p-4 rounded-lg">
+          <div class="text-3xl font-bold text-blue-600" id="today-time-spent">
+            --
+          </div>
+          <div class="text-sm text-muted">Time Spent</div>
+        </div>
+        <div class="p-4 rounded-lg">
+          <div class="text-3xl font-bold text-purple-600" id="today-sessions">
+            --
+          </div>
+          <div class="text-sm text-muted">Sessions</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hourly Breakdown Today -->
+    <div class="mb-6">
+      <h3 class="text-xl font-semibold text-card mb-3 flex items-center">
+        <svg
+          class="w-5 h-5 mr-2 text-green-500"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l3 3a1 1 0 001.414-1.414L11 9.586V6z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        Hourly Breakdown (Today)
+      </h3>
+      <div id="hourly-stats-list" class="space-y-2">
+        <p class="text-muted text-sm">No hourly data available for today.</p>
+      </div>
+    </div>
+
+    <!-- Daily Study History -->
+    <div class="mb-6">
+      <h3 class="text-xl font-semibold text-card mb-3 flex items-center">
+        <svg
+          class="w-5 h-5 mr-2 text-orange-500"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        Daily Study History
+      </h3>
+      <div id="daily-stats-list" class="space-y-2">
+        <p class="text-muted text-sm">No historical data available.</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col space-y-4 mt-8">
+      <a
+        href="flashcard"
+        class="btn-primary text-white font-medium py-3 px-6 rounded-lg text-center"
+      >
+        Back to Flashcards
+      </a>
+    </div>
+  </div>
+</main>

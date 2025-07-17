@@ -1,0 +1,259 @@
+<!-- Main Content -->
+<main class="max-w-4xl mx-auto px-4 py-6">
+  <!-- Progress Section -->
+  <section class="mb-6">
+    <div class="bg-card rounded-xl shadow-sm p-4">
+      <div class="flex justify-between items-center mb-3">
+        <span class="text-sm font-medium text-muted">Progress</span>
+        <span id="progress-text" class="text-sm font-bold text-blue-600"
+          >1 / 50</span
+        >
+      </div>
+      <div class="w-full bg-gray-200 rounded-full h-2">
+        <div
+          id="progress-bar"
+          class="progress-bar bg-blue-500 h-2 rounded-full"
+          style="width: 2%"
+        ></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FlashCard Section -->
+  <section class="mb-6">
+    <div class="flex justify-center">
+      <div
+        class="flip-card w-full max-w-sm md:max-w-md lg:max-w-lg h-80 md:h-96"
+        id="flashcard"
+      >
+        <div class="flip-card-inner">
+          <!-- Front Side -->
+          <div class="flip-card-front">
+            <div class="text-center w-full">
+              <div
+                class="text-xs md:text-sm uppercase tracking-wide text-blue-200 mb-2 md:mb-3 flex items-center justify-center"
+              >
+                <svg
+                  class="w-4 h-4 mr-1"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M7 2a1 1 0 011 1v1h3a1 1 0 110 2H9.578a18.87 18.87 0 01-1.724 4.78c.29.354.596.696.914 1.026a1 1 0 11-1.44 1.389c-.188-.196-.373-.396-.554-.6a19.098 19.098 0 01-3.107 3.567 1 1 0 01-1.334-1.49 17.087 17.087 0 003.13-3.733 18.992 18.992 0 01-1.487-2.494 1 1 0 111.79-.89c.234.47.489.928.764 1.372.417-.934.752-1.913.997-2.927H3a1 1 0 110-2h3V3a1 1 0 011-1zm6 6a1 1 0 01.894.553l2.991 5.982a.869.869 0 01.02.037l.99 1.98a1 1 0 11-1.79.895L15.383 16h-4.764l-.724 1.447a1 1 0 11-1.788-.894l.99-1.98.019-.038 2.99-5.982A1 1 0 0113 8zm-1.382 4h2.764L13 9.236 11.618 12z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                English Word
+              </div>
+              <h2
+                id="word-front"
+                class="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4"
+              >
+                Loading...
+              </h2>
+
+              <!-- Pronunciation Section -->
+              <div class="mb-4 md:mb-6">
+                <div class="glass-effect rounded-xl p-3 md:p-4 mb-3">
+                  <div class="flex items-center justify-center space-x-2 mb-2">
+                    <svg
+                      class="w-4 h-4 text-blue-200"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.846 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.846l3.537-3.816a1 1 0 011.617.816zM16 8a3 3 0 11-6 0 3 3 0 016 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="text-xs md:text-sm text-blue-200"
+                      >Pronunciation</span
+                    >
+                  </div>
+                  <div class="flex items-center justify-center space-x-3">
+                    <span
+                      id="pronunciation-text"
+                      class="text-lg md:text-xl font-mono text-white"
+                      >...</span
+                    >
+                    <button
+                      id="pronunciation-btn"
+                      class="pronunciation-btn w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-4 h-4 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  id="word-type-front"
+                  class="text-sm md:text-base text-blue-200 font-medium"
+                >
+                  ...
+                </div>
+              </div>
+
+              <div
+                class="text-xs md:text-sm text-blue-200 flex items-center justify-center"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+                  />
+                </svg>
+                Click to see meaning
+              </div>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="flip-card-back">
+            <div class="text-center w-full">
+              <div
+                class="text-xs md:text-sm uppercase tracking-wide text-pink-200 mb-2 md:mb-3 flex items-center justify-center"
+              >
+                <svg
+                  class="w-4 h-4 mr-1"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M7 2a1 1 0 011 1v1h3a1 1 0 110 2H9.578a18.87 18.87 0 01-1.724 4.78c.29.354.596.696.914 1.026a1 1 0 11-1.44 1.389c-.188-.196-.373-.396-.554-.6a19.098 19.098 0 01-3.107 3.567 1 1 0 01-1.334-1.49 17.087 17.087 0 003.13-3.733 18.992 18.992 0 01-1.487-2.494 1 1 0 111.79-.89c.234.47.489.928.764 1.372.417-.934.752-1.913.997-2.927H3a1 1 0 110-2h3V3a1 1 0 011-1zm6 6a1 1 0 01.894.553l2.991 5.982a.869.869 0 01.02.037l.99 1.98a1 1 0 11-1.79.895L15.383 16h-4.764l-.724 1.447a1 1 0 11-1.788-.894l.99-1.98.019-.038 2.99-5.982A1 1 0 0113 8zm-1.382 4h2.764L13 9.236 11.618 12z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Vietnamese Meaning
+              </div>
+              <h2
+                id="word-back"
+                class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4"
+              >
+                ...
+              </h2>
+              <div
+                id="word-type-back"
+                class="text-sm md:text-base text-pink-200 mb-4 md:mb-6 font-medium"
+              >
+                ...
+              </div>
+
+              <!-- Example Section -->
+              <div class="glass-effect rounded-xl p-3 md:p-4">
+                <div class="flex items-center justify-center mb-2">
+                  <svg
+                    class="w-4 h-4 text-pink-200 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-xs md:text-sm text-pink-200">Example</span>
+                </div>
+                <div
+                  id="word-example"
+                  class="text-sm md:text-base text-pink-100 italic leading-relaxed"
+                >
+                  ...
+                </div>
+              </div>
+
+              <div
+                class="text-xs md:text-sm text-pink-200 flex items-center justify-center mt-4"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
+                Click to flip back
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Controls Section -->
+  <section class="mb-6">
+    <div class="flex justify-center space-x-4">
+      <button
+        id="prev-btn"
+        class="btn-secondary bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium text-sm py-3 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+        disabled
+      >
+        ← Previous
+      </button>
+
+      <button
+        id="flip-btn"
+        class="btn-primary text-white font-medium text-sm py-3 px-6 rounded-lg"
+      >
+        Flip Card
+      </button>
+
+      <button
+        id="next-btn"
+        class="btn-secondary bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium text-sm py-3 px-6 rounded-lg"
+      >
+        Next →
+      </button>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section>
+    <div class="bg-card rounded-xl shadow-sm p-4">
+      <div class="grid grid-cols-3 gap-4 text-center">
+        <div>
+          <div class="text-2xl font-bold text-blue-600" id="current-position">
+            1
+          </div>
+          <div class="text-xs text-muted">Current</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-card" id="total-cards">50</div>
+          <div class="text-xs text-muted">Total</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-green-600" id="completion-rate">
+            2%
+          </div>
+          <div class="text-xs text-muted">Complete</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
