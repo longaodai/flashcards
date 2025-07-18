@@ -55,14 +55,20 @@ class FlashCardApp {
 
   async loadVocabulary() {
     try {
-      const response = await fetch("data.json");
+      const response = await fetch("/api/random-words");
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+
       const data = await response.json();
 
+      if (!data.success || !data.data || data.data.length === 0) {
+        throw new Error("No words found in the response");
+      }
+
       // Shuffle and take 50 random words
-      this.vocabulary = this.shuffleArray(data.words).slice(0, this.totalCards);
+      this.vocabulary = data.data;
       this.totalCardsElement.textContent = this.vocabulary.length;
       this.displayCurrentCard();
       this.updateProgress();
@@ -77,25 +83,31 @@ class FlashCardApp {
   loadFallbackData() {
     this.vocabulary = [
       {
-        tu_vung: "Hello",
-        phien_am: "/həˈloʊ/",
-        loai_tu: "interjection",
-        y_nghia: "Xin chào",
-        vi_du: "Hello, how are you today?",
+        word: "end",
+        frequency: 73099,
+        dispersion: 0.97,
+        part: "v",
+        part_full: "(n) (v)",
+        spelling: "/end/",
+        translate: "giới hạn, sự kết thúc; kết thúc, chấm dứt",
       },
       {
-        tu_vung: "Beautiful",
-        phien_am: "/ˈbjuːtɪfəl/",
-        loai_tu: "adjective",
-        y_nghia: "Đẹp",
-        vi_du: "She has a beautiful smile.",
+        word: "desperately",
+        frequency: 5701,
+        dispersion: 0.95,
+        part: "r",
+        part_full: "(adv)",
+        spelling: "/'despəritli/",
+        translate: "liều lĩnh, liều mạng",
       },
       {
-        tu_vung: "Learning",
-        phien_am: "/ˈlɜːrnɪŋ/",
-        loai_tu: "noun/verb",
-        y_nghia: "Học tập",
-        vi_du: "Learning English is fun and rewarding!",
+        word: "operation",
+        frequency: 47276,
+        dispersion: 0.95,
+        part: "n",
+        part_full: "(n)",
+        spelling: "/,ɔpə'reiʃn/",
+        translate: "sự hoạt động, quá trình hoạt động",
       },
     ];
     this.totalCards = this.vocabulary.length;
@@ -117,12 +129,12 @@ class FlashCardApp {
     if (this.vocabulary.length === 0) return;
 
     const currentWord = this.vocabulary[this.currentIndex];
-    this.wordFront.textContent = currentWord.tu_vung;
-    this.wordBack.textContent = currentWord.y_nghia;
-    this.wordTypeFront.textContent = `(${currentWord.loai_tu})`;
-    this.wordTypeBack.textContent = `(${currentWord.loai_tu})`;
-    this.wordExample.textContent = currentWord.vi_du;
-    this.pronunciationText.textContent = currentWord.phien_am;
+    this.wordFront.textContent = currentWord.word;
+    this.wordBack.textContent = currentWord.translate;
+    this.wordTypeFront.textContent = currentWord.part_full;
+    this.wordTypeBack.textContent = currentWord.part_full;
+    this.wordExample.textContent = "";
+    this.pronunciationText.textContent = currentWord.spelling;
 
     // Reset flip state
     this.isFlipped = false;
@@ -248,8 +260,8 @@ class FlashCardApp {
     this.stopSpeech();
 
     // Get the first letter of the word (uppercase)
-    const firstLetter = currentWord.tu_vung.charAt(0).toUpperCase();
-    const wordLowercase = currentWord.tu_vung.toLowerCase();
+    const firstLetter = currentWord.word.charAt(0).toUpperCase();
+    const wordLowercase = currentWord.word.toLowerCase();
 
     // Handle X, Y, Z words - they go to X-Y-Z folder
     let folderName = firstLetter;
@@ -299,7 +311,7 @@ class FlashCardApp {
 
   fallbackToTTS(currentWord) {
     // Create new utterance for text-to-speech
-    this.currentUtterance = new SpeechSynthesisUtterance(currentWord.tu_vung);
+    this.currentUtterance = new SpeechSynthesisUtterance(currentWord.word);
     this.currentUtterance.lang = "en-US";
     this.currentUtterance.rate = 0.8;
     this.currentUtterance.pitch = 1;
