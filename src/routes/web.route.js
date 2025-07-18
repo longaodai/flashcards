@@ -1,11 +1,11 @@
-import express from "express";
-import path from "path";
-import {
+const express = require("express");
+const path = require("path");
+const {
   index,
   flashcard,
   done,
   stats,
-} from "../controllers/web.controller.js";
+} = require("../controllers/web.controller.js");
 
 const router = express.Router();
 
@@ -17,4 +17,4 @@ router.get("/stats", stats);
 
 router.get("/done", done);
 
-export default router;
+module.exports = router;
